@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/*:root puede ser útil para declarar variables CSS globales:*/
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  /*le dice al navegador tomar en cuenta para cualquier valor que se 
+  especifique de borde o de relleno para el ancho o alto de un elemento.*/
+}
+
+body {
+  background-color: white;
+	font-family: 'Muli', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	margin: 0
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+  justify-content: space-between;  
+  /*Distribuir items uniformemente*/
+  position: relative;
+  transition: .4s ease;
+  /*efecto de transición con un inicio lento, 
+  luego rápido y luego un final lento*/
+}
+
+.progress-container::before {
+  /* un pseudoelemento que es el primer hijo del elemento seleccionado. 
+  Es usado normalmente para añadir contenido estético a un elemento*/
+  content: '';
+  /*La propiedad content se usa junto con los pseudo-elementos :before y :after 
+  para generar contenido que se adjunta antes o después de un selector CSS.*/
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+}
+
+.progress {
+/*me acomoda la barra de porgreso y la animación respectiva*/
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  /* width: 0%; */
+  z-index: -1;
+  /*indica el orden de un elemento posicionado y sus descendientes. Cuando 
+  varios elementos se superponen, los elementos con mayor valor z-index 
+  cubren aquellos con menor valor.*/
+  transition: 0.4s ease;
+  /*efecto de transición con un inicio lento, 
+  luego rápido y luego un final lento*/
+}
+
+.circle {
+  border: 3px solid var(--line-border-empty);
+  border-radius: 50%;
+  transition: 0.4s ease;
+  width: 25px;
+  background-color: white;
+  display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+  /*outline es una forma reducida para establecer una o más de 
+  las propiedades individuales de contorno outline-style, outline-width 
+  y outline-color en una sola declaración.*/
+}
+/*con esto se enfoca y no se ve el borde al momento de precionar el boton*/
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+  /*El cursor indica que la acción solicitada no se ejecutará*/
+}
+/*Este ultimo la da estilos al boton cuando esta desactivado*/
